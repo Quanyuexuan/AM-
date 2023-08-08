@@ -1,1 +1,31 @@
+name: "Sign"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "56 23 * * *" # 上班卡
+    - cron: "15 1 * * *" # 每日签到检查，如不需要可删除这行
+    - cron: "56 3 * * *" # 下班卡
+    - cron: "15 5 * * *" # 每日签到检查，如不需要可删除这行
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
+        
+    - name: Install depend
+      run: |
+        pip install requests
+
+    - name: Start sign
+      env:
+        USERS: ${{ secrets.USERS }}
+      run: |
+        python main.py
 
