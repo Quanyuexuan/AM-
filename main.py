@@ -13,7 +13,7 @@ from utils import AES, UTC as pytz, MessagePush
 pwd = os.path.dirname(os.path.abspath(__file__)) + os.sep
 
 # 设置重连次数
-requests.adapters.DEFAULT_RETRIES = 5
+requests.adapters.DEFAULT_RETRIES = 500
 
 
 def get_plan_id(user, token: str, sign: str):
