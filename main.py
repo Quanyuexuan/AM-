@@ -254,7 +254,7 @@ def signCheck(users):
         lastSignType = lastSignInfo["type"]
         hourNow = datetime.datetime.now(pytz.timezone('PRC')).hour
         nowDate = str(datetime.datetime.now(pytz.timezone('PRC')))[0:10]
-        if hourNow <= 9 and lastSignType == 'END' and lastSignDate != nowDate:
+        if hourNow <= 8 and lastSignType == 'END' and lastSignDate != nowDate:
             print('            今日未打上班卡，准备补签          ')
             prepareSign(user)
         if hourNow >= 12 and lastSignType == 'START' and lastSignDate == nowDate:
